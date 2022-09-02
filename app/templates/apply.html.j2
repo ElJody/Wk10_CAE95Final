@@ -1,0 +1,65 @@
+{% extends 'base.html.j2'%}
+{% block title %}
+    Apply
+{% endblock %}
+
+{% block content %}
+    <div id="userapply">
+    <h1 color="white">Pre-Qualification</h1>
+    <form action="{{url_for('apply')}}" method="POST">
+    {{form.hidden_tag()}}
+    
+    <div class="mb-3">
+        {{form.loan_type.label(class="form-label")}}
+        {{form.loan_type(class="form-control", placeholder="Hard Money/Rehab Funding/GAP/Etc.", style= "width: 20rem; height: 30%")}}
+        {% for error in form.loan_type.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        {{form.loan_amount.label(class="form-label")}}
+        {{form.loan_amount(class="form-control", placeholder="0.00",style= "width: 20rem; height: 30%")}}
+        {% for error in form.loan_amount.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        {{form.property_type.label(class="form-label")}}
+        {{form.property_type(class="form-control", placeholder="Single Family/Multi-Family/Commercial",style= "width: 20rem; height: 30%")}}
+        {% for error in form.property_type.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+    
+    <div class="mb-3">
+        {{form.property_address.label(class="form-label")}}
+        {{form.property_address(class="form-control", placeholder="Enter Complete Address",style= "width: 20rem; height: 30%")}}
+        {% for error in form.property_address.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        {{form.under_contract.label(class="form-label")}}
+        {{form.under_contract(class="form-control", placeholder="Yes/No",style= "width: 20rem; height: 30%")}}
+        {% for error in form.under_contract.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        {{form.close_date.label(class="form-label")}}
+        {{form.close_date(class="form-control", placeholder="MM/DD/YY", style= "width: 20rem; height: 30%")}}
+        {% for error in form.close_date.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{form.submit(class="btn btn-primary", style= "width: 20rem; height: 30%")}}<br>
+         <small style="color:red">{{error}}</small>
+    </div>
+    </form>
+{% endblock %}

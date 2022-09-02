@@ -1,0 +1,80 @@
+{% extends 'base.html.j2'%}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div id="registeruser">
+    <h1 color="white">Register</h1>
+    <form action="{{url_for('register')}}" method="POST">
+    {{form.hidden_tag()}}
+    <div class="mb-3">
+        {{form.full_name.label(class="form-label")}}
+        {{form.full_name(class="form-control",style= "width: 20rem; height: 30%")}}
+        {% for error in form.full_name.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{form.llc_name.label(class="form-label")}}
+        {{form.llc_name(class="form-control", placeholder="No LLC? We'll Help You Create One",style= "width: 20rem; height: 30%")}}
+        {% for error in form.llc_name.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        {{form.phone.label(class="form-label")}}
+        {{form.phone(class="form-control", placeholder="999-999-9999",style= "width: 20rem; height: 30%")}}
+        {% for error in form.phone.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        {{form.referral.label(class="form-label")}}
+        {{form.referral(class="form-control", placeholder="How Did You Find Us?",style= "width: 20rem; height: 30%")}}
+        {% for error in form.referral.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+
+
+    <div class="mb-3">
+        {{form.email.label(class="form-label")}}
+        {{form.email(class="form-control",style= "width: 20rem; height: 30%")}}
+        {% for error in form.email.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+    
+    <div class="mb-3">
+        {{form.password.label(class="form-label")}}
+        {{form.password(class="form-control",style= "width: 20rem; height: 30%")}}
+        {% for error in form.password.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+        <div class="mb-3">
+        {{form.confirm_password.label(class="form-label")}}
+        {{form.confirm_password(class="form-control",style= "width: 20rem; height: 30%")}}
+        {% for error in form.confirm_password.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+     {# <div class="col-md-8">
+        <label for="inputState" class="form-label">State</label>
+        <select id="inputState" class="form-select">
+          <option selected="">Choose...</option>
+          <option>Texas</option>
+          <option>Oklahoma</option>
+        </select>
+      </div>
+    <div class="mb-3">
+        </div> #}
+    <div> 
+        {{form.submit(class="btn btn-primary", style= "width: 20rem; height: 30%")}}<br>
+         <small style="color:red">{{error}}</small>
+    </div>
+    </form>
+{% endblock %}
